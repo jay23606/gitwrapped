@@ -1,0 +1,5 @@
+node_modules/
+*.tgz
+gitwrapped.html
+.DS_Store
+.env

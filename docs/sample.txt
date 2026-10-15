@@ -1,0 +1,43 @@
+
+gitwrapped  Oct 15, 2025 → Oct 14, 2026
+
+  🦉  The Night Owl
+     The best bugs are fixed after midnight.
+
+  577 commits across 223 active days
+  +30,556 -30,190 lines in 10 files
+  🔥 Longest streak: 27 days (May 3, 2026 → May 29, 2026)
+  📅 Busiest day: May 14, 2026 (6 commits)
+
+      Oct     Dec Jan Feb Mar  Apr May  Jun Jul Aug  Sep   
+       ▒▒▒░·▒···▓▒········▒▒···▒▒··▒▒██▒···▒·▓·▒░·▒········
+  Mon  ·░▒·▒▒░·▒▓░░·▒▓▒▒░░··▒··░▒▒▒▓▒█░▒·▒▒░░▓·▒▓▓▒▒·▓▒▓·▒·
+       ▒··▒▒·░▒▒░▓▓▓·▒░▓▓▒▒▒▒░░▒·▒▓▓▒░█░·▒·▒▓▓░░▒░▓▒░·░·▒░·
+  Wed ▒░·░▓░▒▒▓·░▓··▓░·▒▒▒·▓▓▒·▓··░▒░█▓▓▒▒··▒·▓·▒▒▒··░▒▒▒··
+      ▓·▒▒·▒·▒▒▓▓▓░·▓·▒▓··▒▒·▓·▒▒▓▒▒█░▒···▒▒▒▒▒▒░▒·▒░░··▒· 
+  Fri ▓··▒▒▓·░···░░··▓▒▓▒▒░▓··▓▓·▒·▒░▒▒▒▓▓▓····░░·▒▒·▒▒▒·· 
+      ···░···░·······▒▒······▒·▒░··▓▒▒··▒░··▓·▓·▒·░····▒·· 
+      less · ░ ▒ ▓ █ more
+
+  Hours   ▄▅▄▅····▃▄▄··▃▃▃▃▃·▆▆▆█·   peak 10 PM
+          00    06    12    18    
+  Days    ██▇▇▇▄▅   favourite Tuesday
+          MTWTFSS
+
+  Top languages
+  TypeScript   ██████████░░░░░░░░░░░░░░ 40%
+  Python       █████░░░░░░░░░░░░░░░░░░░ 20%
+  CSS          ███░░░░░░░░░░░░░░░░░░░░░ 11%
+  JSON         ███░░░░░░░░░░░░░░░░░░░░░ 11%
+  Markdown     ██░░░░░░░░░░░░░░░░░░░░░░ 10%
+
+  Your words  fix ×145  add ×128  feat ×122  empty ×66  test ×60  docs ×55  refactor ×49  pipeline ×38
+  Commit types  fix ×145  feat ×122  test ×60  docs ×55  refactor ×49  ci ×38
+  Biggest commit  +165 -160 a77409a chore: bump dependencies
+
+  ✦ Your peak hour is 10 PM.
+  ✦ Tuesday is your favourite day to commit.
+  ✦ You committed on 61% of the days in this period.
+
+  Generated locally. Nothing left your machine. Add --html to get a shareable report.
+

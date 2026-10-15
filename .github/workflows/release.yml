@@ -1,0 +1,52 @@
+name: Release
+
+# Run it from the Actions tab ("Run workflow") and type a version like v0.1.0,
+# or push a tag that starts with "v".
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag to create, e.g. v0.1.0"
+        required: true
+        default: "v0.1.0"
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - name: Package
+        run: npm pack
+      - name: Create GitHub release with the package attached
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event.inputs.version || github.ref_name }}
+        run: |
+          gh release create "$TAG" ./*.tgz --target "$GITHUB_SHA" --title "gitwrapped $TAG" --generate-notes \
+            || gh release upload "$TAG" ./*.tgz --clobber
+
+  # Optional: publish to npm so people can run `npx gitwrapped`.
+  # Turn on by (1) creating an npm access token and saving it as a repository secret named NPM_TOKEN,
+  # then (2) adding a repository variable PUBLISH_TO_NPM = true.
+  npm:
+    needs: release
+    if: vars.PUBLISH_TO_NPM == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

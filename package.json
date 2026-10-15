@@ -1,0 +1,39 @@
+{
+  "name": "gitwrapped",
+  "version": "0.1.0",
+  "description": "Spotify Wrapped for your git history. Streaks, heatmap, night-owl score and a coder personality, all offline.",
+  "type": "module",
+  "bin": {
+    "gitwrapped": "bin/gitwrapped.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "demo": "node scripts/make-demo.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "git",
+    "wrapped",
+    "stats",
+    "cli",
+    "commit-history",
+    "developer-tools",
+    "heatmap",
+    "streak"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luciferalive/gitwrapped.git"
+  },
+  "bugs": "https://github.com/luciferalive/gitwrapped/issues",
+  "homepage": "https://github.com/luciferalive/gitwrapped#readme"
+}
