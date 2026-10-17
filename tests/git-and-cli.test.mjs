@@ -112,7 +112,8 @@ test("CLI terminal output renders without color codes when piped", () => {
 
 test("HTML report is written, self-contained and escapes hostile commit messages", () => {
   const evil = [{ date: "2026-03-01T10:00:00Z", msg: '<img src=x onerror=alert(1)> "quotes" & <script>alert(2)</script>', files: { "a.js": 5 } }];
-  const repo = makeRepo(evil, { name: "<b>repo</b>" });
+  // Keep the filesystem name portable; arbitrary HTML names are tested directly below.
+  const repo = makeRepo(evil, { name: "repo & 'quotes'" });
   const file = path.join(path.dirname(repo), "report.html");
   try {
     const r = run([repo, "--year", "2026", "--html", file]);
@@ -121,7 +122,8 @@ test("HTML report is written, self-contained and escapes hostile commit messages
     assert.ok(html.startsWith("<!doctype html>"));
     assert.ok(!html.includes("<img src=x"), "unescaped <img> found");
     assert.ok(!html.includes("<script>alert(2)"), "unescaped script found");
-    assert.ok(!html.includes("<b>repo</b>"), "unescaped repo name found");
+    assert.ok(!html.includes("repo & 'quotes'"), "unescaped repo name found");
+    assert.ok(html.includes("repo &amp; &#39;quotes&#39;"));
     assert.ok(html.includes("&lt;img src=x"));
     assert.ok(!/(src|href)=["']https?:\/\/(?!github\.com\/luciferalive)/.test(html), "external resource found");
   } finally {
