@@ -115,6 +115,22 @@ test("personas", () => {
   assert.equal(pickPersona({ totalCommits: 50, shares: { night: 0, early: 0, weekend: 0, fix: 0 }, longestStreak: { length: 1 }, linesAdded: 10, linesDeleted: 0, perActiveDay: 1 }).id, "steady-builder");
 });
 
+test("the minimalist: tiny commits get it, huge commits do not", () => {
+  // 20 one-line commits, every other day, so no streak, weekend or commit-machine rule matches first
+  const day = (i) => new Date(Date.UTC(2026, 0, 5) + i * 2 * 86400000).toISOString().slice(0, 10);
+  const tiny = Array.from({ length: 20 }, (_, i) => commit(`${day(i)}T10:00:00+00:00`, "tweak", [{ path: "src/a.mjs", added: 1, deleted: 0 }]));
+  const tinyStats = computeStats(tiny, { ...range, now: NOW });
+  assert.equal(tinyStats.avgLinesPerCommit, 1);
+  assert.equal(tinyStats.persona.id, "minimalist");
+
+  const huge = Array.from({ length: 20 }, (_, i) => commit(`${day(i)}T10:00:00+00:00`, "big", [{ path: "src/a.mjs", added: 300, deleted: 20 }]));
+  const hugeStats = computeStats(huge, { ...range, now: NOW });
+  assert.equal(hugeStats.avgLinesPerCommit, 320);
+  assert.notEqual(hugeStats.persona.id, "minimalist");
+
+  assert.equal(computeStats([], { ...range, now: NOW }).avgLinesPerCommit, 0);
+});
+
 test("redaction removes names, files, words and commit messages", () => {
   const files = [{ path: "secret/plan.ts", added: 5, deleted: 0 }];
   const s = redactStats(computeStats([commit("2026-03-01T10:00:00+00:00", "launch project falcon", files, { repo: "stealth-startup" })], { ...range, now: NOW }));

@@ -2,7 +2,7 @@
 // Want to add one? Add an object to PERSONAS. See CONTRIBUTING.md.
 //
 // `s` is the stats object built in stats.mjs. Useful fields:
-//   totalCommits, activeDays, longestStreak.length, linesAdded, linesDeleted,
+//   totalCommits, activeDays, longestStreak.length, linesAdded, linesDeleted, avgLinesPerCommit,
 //   shares.night / shares.early / shares.weekend (0..1), shares.fix (0..1), perActiveDay
 
 export const PERSONAS = [
@@ -61,6 +61,13 @@ export const PERSONAS = [
     title: "The Commit Machine",
     tagline: "Small commits, constantly. Your history reads like a diary.",
     match: (s) => s.perActiveDay >= 5,
+  },
+  {
+    id: "minimalist",
+    emoji: "🔬",
+    title: "The Minimalist",
+    tagline: "Tiny, surgical commits. One change, one commit.",
+    match: (s) => s.totalCommits >= 20 && s.avgLinesPerCommit <= 10,
   },
   {
     id: "steady-builder",

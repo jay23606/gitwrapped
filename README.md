@@ -131,6 +131,7 @@ Your personality is the first rule below that matches your history.
 | ♻️ | **The Great Refactorer** | You delete almost as much as you add |
 | 🚒 | **The Firefighter** | 30%+ of commit messages start with "fix" |
 | ⚙️ | **The Commit Machine** | 5+ commits on a typical active day |
+| 🔬 | **The Minimalist** | 20+ commits averaging 10 changed lines or fewer each |
 | 🧱 | **The Steady Builder** | Everything else |
 
 Got a better idea? Adding one takes about 8 lines. See [Contributing](#contributing).

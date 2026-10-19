@@ -173,6 +173,7 @@ export function computeStats(commits, { now = new Date(), start, end } = {}) {
     monthly: [...monthly.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([month, count]) => ({ month, count })),
     linesAdded: added,
     linesDeleted: deleted,
+    avgLinesPerCommit: total ? (added + deleted) / total : 0,
     filesTouched: touched.size,
     topFiles: topN(files, 5, (path, changes) => ({ path, changes })),
     languages: topN(exts, 8, (name, changes) => ({ name, changes, share: languageTotal ? changes / languageTotal : 0 })),
